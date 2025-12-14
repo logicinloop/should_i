@@ -1,27 +1,46 @@
 import React from "react";
 import { decide } from "../utils/logic";
+import Confetti from "react-confetti";
+import { useWindowSize } from "react-use";
 
-
-
-function Result({ info, setPg }) {
-  const out = decide(info.fd, info.hg, info.gl);
+export default function Result({ info, setPg }) {
+  const { width, height } = useWindowSize();
+  const out = decide(info.food, info.hunger, info.goal);
 
   return (
     <div className="card">
-      <h2>{out.res}</h2>
-      <p>{out.msg}</p>
-      
+      <h2>{out.result}</h2>
+      <p>{out.reason}</p>
+      <div className="tip">{out.tip}</div>
 
-      {/* AI-like suggestion */}
-      <div style={{ marginTop: "10px", fontStyle: "italic", color: "#555" }}>
-        💡 {out.tip}
+      <div
+        style={{
+          marginTop: "15px",
+          width: "100%",
+          height: "20px",
+          background: "#ccc",
+          borderRadius: "10px",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            width: `${out.score}%`,
+            height: "100%",
+            background: "#4caf50",
+            transition: "width 0.5s",
+          }}
+        />
       </div>
 
-      <button onClick={() => setPg("home")}>
+      {info.food === "healthy" && <Confetti width={width} height={height} />}
+
+      <button
+        style={{ marginTop: "15px", background: "#2196f3" }}
+        onClick={() => setPg("home")}
+      >
         Check Another Food
       </button>
     </div>
   );
 }
-
-export default Result;
