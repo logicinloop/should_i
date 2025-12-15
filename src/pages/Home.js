@@ -1,9 +1,8 @@
 import React from "react";
-
 export default function Home({ setPg }) {
   return (
     <div className="card">
-      <h1>🥗 Should I Eat This?</h1>
+      <h1>🥗 Should I Eat This? 🥗</h1>
       <p>A smart food decision assistant</p>
       <button onClick={() => setPg("form")}>Start</button>
       <button

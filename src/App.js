@@ -6,18 +6,14 @@ import Quiz from "./pages/Quiz";
 import FloatingItems from "./pages/FloatingItems";
 import Particles from "react-tsparticles";
 import "./styles.css";
-
 export default function App() {
   const [pg, setPg] = useState("home");
   const [info, setInfo] = useState({});
   const [theme, setTheme] = useState("light");
-
   const toggleTheme = () =>
     setTheme(theme === "light" ? "dark" : "light");
-
   return (
     <div className={`app ${theme}`}>
-      {/* Particles background */}
       <Particles
         id="tsparticles"
         options={{
@@ -31,22 +27,15 @@ export default function App() {
           },
         }}
       />
-
-      {/* Sparkles */}
       <div className="sparkles">
         {[...Array(30)].map((_, i) => (
           <div key={i} className="sparkle"></div>
         ))}
       </div>
-
-      {/* Floating fruits/stars */}
       <FloatingItems />
-
-      {/* Theme toggle */}
       <button className="theme-btn" onClick={toggleTheme}>
         {theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode"}
       </button>
-
       <div className="container">
         {pg === "home" && <Home setPg={setPg} />}
         {pg === "form" && <Form setPg={setPg} setInfo={setInfo} />}

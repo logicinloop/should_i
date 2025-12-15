@@ -1,7 +1,5 @@
 import React from "react";
-
-const items = ["🍎", "🍌", "🍇", "🍓", "⭐", "🌟", "🥝", "🍊"];
-
+const items = ["🍎", "🍇", "🍓", "⭐", "🌟", "🥝", "🍊"];
 export default function FloatingItems() {
   return (
     <div className="floating-items">
